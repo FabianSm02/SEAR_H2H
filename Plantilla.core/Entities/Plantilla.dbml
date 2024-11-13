@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PS_H2H_BANCO" Class="PlantillaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.2.11;Initial Catalog=PS_H2H_BANCO;Persist Security Info=True;User ID=SA" SettingsObjectName="Plantilla.core.Properties.Settings" SettingsPropertyName="PS_H2H_BANCOConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="ATCL.ESTADOS_DEMO" Member="ESTADOS_DEMOs">
+    <Type Name="ESTADOS_DEMO">
+      <Column Name="ID" Type="System.String" DbType="VarChar(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DESCRIP" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="GLOBAL.PROC_EDI_DESCRIPCION_ROL" Method="PROC_EDI_DESCRIPCION_ROL">
+    <Parameter Name="ROL" Parameter="rOL" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DESCRIPCION" Parameter="dESCRIPCION" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_VAL_USUARIO_SOFTLAND" Method="PROC_VAL_USUARIO_SOFTLAND">
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="PASS" Parameter="pASS" Type="System.String" DbType="VarChar(250)" />
+    <ElementType Name="PROC_VAL_USUARIO_SOFTLANDResult">
+      <Column Name="VALID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_EDI_ESTADO_USUARIO" Method="PROC_EDI_ESTADO_USUARIO">
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ESTADO" Parameter="eSTADO" Type="System.String" DbType="VarChar(1)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_EDI_USUARIO" Method="PROC_EDI_USUARIO">
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ROL" Parameter="rOL" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_INS_ROL" Method="PROC_INS_ROL">
+    <Parameter Name="DESCRIPCION" Parameter="dESCRIPCION" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_INS_USUARIO" Method="PROC_INS_USUARIO">
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ROL" Parameter="rOL" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_ROLES" Method="PROC_OBT_ROLES">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="PROC_OBT_ROLESResult">
+      <Column Name="ROL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_USUARIOS" Method="PROC_OBT_USUARIOS">
+    <Parameter Name="ROL" Parameter="rOL" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="PROC_OBT_USUARIOSResult">
+      <Column Name="USUARIO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="ROL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ROL_DESCRIPCION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ESTADO" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_USUARIOS_PARA_INSERTAR" Method="PROC_OBT_USUARIOS_PARA_INSERTAR">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="PROC_OBT_USUARIOS_PARA_INSERTARResult">
+      <Column Name="USUARIO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_VAL_USUARIO" Method="PROC_VAL_USUARIO">
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="PASS" Parameter="pASS" Type="System.String" DbType="VarChar(250)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="PROC_VAL_USUARIOResult">
+      <Column Name="VALID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_VAL_USUARIO_ACTIVO" Method="PROC_VAL_USUARIO_ACTIVO">
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="PROC_VAL_USUARIO_ACTIVOResult">
+      <Column Name="ACTIVO" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_VAL_USUARIO_ROL" Method="PROC_VAL_USUARIO_ROL">
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="PROC_VAL_USUARIO_ROLResult">
+      <Column Name="ROL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CIA" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CORREO" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_CLIENTES_FILTRO" Method="PROC_OBT_CLIENTES_FILTRO">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_CLIENTES_FILTROResult">
+      <Column Name="CLIENTE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="COMPLETO" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_DOCUMENTOS_FILTRO" Method="PROC_OBT_DOCUMENTOS_FILTRO">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_DOCUMENTOS_FILTROResult">
+      <Column Name="DOCUMENTO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_PROVEEDORES_FILTRO" Method="PROC_OBT_PROVEEDORES_FILTRO">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_PROVEEDORES_FILTROResult">
+      <Column Name="PROVEEDOR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="COMPLETO" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_CUENTAS_BANCARIAS_TODAS_FILTRO" Method="PROC_OBT_CUENTAS_BANCARIAS_TODAS_FILTRO">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_CUENTAS_BANCARIAS_TODAS_FILTROResult">
+      <Column Name="CUENTA_BANCO" Type="System.String" DbType="VarChar(22)" CanBeNull="true" />
+      <Column Name="COMPLETO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_TRANSFERENCIAS_FILTRO" Method="PROC_OBT_TRANSFERENCIAS_FILTRO">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_TRANSFERENCIAS_FILTROResult">
+      <Column Name="TRANSFERENCIA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="SEAR.PROC_ENVIAR_CORREO_PAGO_H2H_MASIVO" Method="PROC_ENVIAR_CORREO_PAGO_H2H_MASIVO">
+    <Parameter Name="DEBITO" Parameter="dEBITO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_ENVIAR_CORREO_PAGO_H2H" Method="PROC_ENVIAR_CORREO_PAGO_H2H">
+    <Parameter Name="PROVEEDOR" Parameter="pROVEEDOR" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="DEBITO" Parameter="dEBITO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_INS_DOCUMENTO_CC" Method="PROC_INS_DOCUMENTO_CC">
+    <Parameter Name="CUENTA_BANCARIA" Parameter="cUENTA_BANCARIA" Type="System.String" DbType="VarChar(22)" />
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="DOCUMENTO" Parameter="dOCUMENTO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TIPO" Parameter="tIPO" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="SUBTIPO" Parameter="sUBTIPO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FECHA" Parameter="fECHA" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="CONCEPTO" Parameter="cONCEPTO" Type="System.String" DbType="VarChar(240)" />
+    <Parameter Name="MONTO" Parameter="mONTO" Type="System.Decimal" DbType="Decimal(28,8)" />
+    <Parameter Name="MONEDA" Parameter="mONEDA" Type="System.String" DbType="VarChar(4)" />
+    <Parameter Name="ID_LINEA" Parameter="iD_LINEA" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CLIENTE" Parameter="cLIENTE" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_SUBTIPOS_CC_FILTRO" Method="PROC_OBT_SUBTIPOS_CC_FILTRO">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_SUBTIPOS_CC_FILTROResult">
+      <Column Name="SUBTIPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_SUBTIPOS_CC_X_TIPO_FILTRO" Method="PROC_OBT_SUBTIPOS_CC_X_TIPO_FILTRO">
+    <Parameter Name="TIPO" Parameter="tIPO" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_SUBTIPOS_CC_X_TIPO_FILTROResult">
+      <Column Name="SUBTIPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_SUBTIPOS_CP_FILTRO" Method="PROC_OBT_SUBTIPOS_CP_FILTRO">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_SUBTIPOS_CP_FILTROResult">
+      <Column Name="SUBTIPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_SUBTIPOS_CP_X_TIPO_FILTRO" Method="PROC_OBT_SUBTIPOS_CP_X_TIPO_FILTRO">
+    <Parameter Name="TIPO" Parameter="tIPO" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_SUBTIPOS_CP_X_TIPO_FILTROResult">
+      <Column Name="SUBTIPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_INS_DOCUMENTO_CP" Method="PROC_INS_DOCUMENTO_CP">
+    <Parameter Name="CUENTA_BANCARIA" Parameter="cUENTA_BANCARIA" Type="System.String" DbType="VarChar(22)" />
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="DOCUMENTO" Parameter="dOCUMENTO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TIPO" Parameter="tIPO" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="SUBTIPO" Parameter="sUBTIPO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FECHA" Parameter="fECHA" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="CONCEPTO" Parameter="cONCEPTO" Type="System.String" DbType="VarChar(240)" />
+    <Parameter Name="MONTO" Parameter="mONTO" Type="System.Decimal" DbType="Decimal(28,8)" />
+    <Parameter Name="MONEDA" Parameter="mONEDA" Type="System.String" DbType="VarChar(4)" />
+    <Parameter Name="ID_LINEA" Parameter="iD_LINEA" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="PROVEEDOR" Parameter="pROVEEDOR" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_EDI_PERMISOS" Method="PROC_EDI_PERMISOS">
+    <Parameter Name="ROL" Parameter="rOL" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TRANSFERENCIAS" Parameter="tRANSFERENCIAS" Type="System.Int32" DbType="Int" />
+    <Parameter Name="H2H" Parameter="h2H" Type="System.Int32" DbType="Int" />
+    <Parameter Name="USUARIOS" Parameter="uSUARIOS" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_PERMISOS" Method="PROC_OBT_PERMISOS">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="PROC_OBT_PERMISOSResult">
+      <Column Name="ROL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TRANSFERENCIAS" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="H2H" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="USUARIOS" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_USUARIO_PERMISOS" Method="PROC_OBT_USUARIO_PERMISOS">
+    <Parameter Name="ROL" Parameter="rOL" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_USUARIO_PERMISOSResult">
+      <Column Name="ROL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TRANSFERENCIAS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="H2H" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USUARIOS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_TRANSFERENCIAS_LINEAS" Method="PROC_OBT_TRANSFERENCIAS_LINEAS">
+    <Parameter Name="TRANSFERENCIA" Parameter="tRANSFERENCIA" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_TRANSFERENCIAS_LINEASResult">
+      <Column Name="PROVEEDOR_COMPLETO" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PROVEEDOR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CONCEPTO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CUENTA_DESTINO" Type="System.String" DbType="VarChar(22)" CanBeNull="true" />
+      <Column Name="SALDO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MONEDA_PAGO" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="MONEDA_PROVEEDOR" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="MONTO_A_PAGAR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NUMERO_ORIGEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PROVEEDOR_CRYSTAL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CORREO_PROVEEDOR" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="FECHA_DOC_STR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="MONTO_DOC_STR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ORDEN_COMPRA" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TIPO" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="SALDO_DOC_STR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_PROVEEDORES_PARA_REPORTE" Method="PROC_OBT_PROVEEDORES_PARA_REPORTE">
+    <Parameter Name="NUMERO_ORIGEN" Parameter="nUMERO_ORIGEN" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_PROVEEDORES_PARA_REPORTEResult">
+      <Column Name="PROVEEDOR_CRYSTAL" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="NUMERO" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_ESTADO_CUENTA_BANCARIO" Method="PROC_OBT_ESTADO_CUENTA_BANCARIO">
+    <Parameter Name="FECHA_INICIO" Parameter="fECHA_INICIO" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="FECHA_FINAL" Parameter="fECHA_FINAL" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="CUENTA_BANCARIA" Parameter="cUENTA_BANCARIA" Type="System.String" DbType="VarChar(22)" />
+    <Parameter Name="TIPO" Parameter="tIPO" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="SUBTIPO" Parameter="sUBTIPO" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="DOCUMENTO_SOFTLAND" Parameter="dOCUMENTO_SOFTLAND" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="PROVEEDOR" Parameter="pROVEEDOR" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CLIENTE" Parameter="cLIENTE" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="DEBITO_O_CREDITO" Parameter="dEBITO_O_CREDITO" Type="System.String" DbType="VarChar(1)" />
+    <Parameter Name="CXC_CXP" Parameter="cXC_CXP" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="CARGADO_BANCOS" Parameter="cARGADO_BANCOS" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_ESTADO_CUENTA_BANCARIOResult">
+      <Column Name="ID_H2H" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_LINEA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CUENTA_BANCO" Type="System.String" DbType="VarChar(22)" CanBeNull="true" />
+      <Column Name="REFERENCIA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TIPO" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="SUBTIPO" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DOCUMENTO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CARGADO_ERP" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="FECHA_TEF" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FECHA_TEF_STR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="PS_86_REFERENCIA" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CREDITO" Type="System.Decimal" DbType="Decimal(28,8)" CanBeNull="true" />
+      <Column Name="DEBITO" Type="System.Decimal" DbType="Decimal(28,8)" CanBeNull="true" />
+      <Column Name="CREDITO_STR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DEBITO_STR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CREDITO_DEBITO" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="ESTADO_CB" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="FECHA_MT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FECHA_MT_STR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="PROVEEDOR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CLIENTE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CC_CP" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="MONEDA" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="ASOCIADO_H2H" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_TRANSFERENCIAS" Method="PROC_OBT_TRANSFERENCIAS">
+    <Parameter Name="FECHA_INICIO" Parameter="fECHA_INICIO" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="FECHA_FINAL" Parameter="fECHA_FINAL" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="CUENTA_BANCARIA" Parameter="cUENTA_BANCARIA" Type="System.String" DbType="VarChar(22)" />
+    <Parameter Name="TRANSFERENCIA" Parameter="tRANSFERENCIA" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="PROVEEDOR" Parameter="pROVEEDOR" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_TRANSFERENCIASResult">
+      <Column Name="TRANSFERENCIA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FECHA_STR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DETALLE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ENTIDAD_FINANCIERA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CUENTA_BANCO" Type="System.String" DbType="VarChar(22)" CanBeNull="true" />
+      <Column Name="CUENTA_BANCO_DESC" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="MONEDA" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="MONTO" Type="System.Decimal" DbType="Decimal(28,8)" CanBeNull="true" />
+      <Column Name="MONTO_STR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PROVEEDOR" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PROVEEDOR_COMPLETO" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="H2H_ENVIADO" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="PROVEEDOR_CRYSTAL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CORREO_PROVEEDOR" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="U_PS_H2H_NUM_BANCO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="U_PS_H2H_EMAIL_ENVIADO" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_ESTADO_CUENTA_BANCARIO_PARA_ACCIONES" Method="PROC_OBT_ESTADO_CUENTA_BANCARIO_PARA_ACCIONES">
+    <Parameter Name="ID_LINEA" Parameter="iD_LINEA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_ESTADO_CUENTA_BANCARIO_PARA_ACCIONESResult">
+      <Column Name="ID_H2H" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_LINEA" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CUENTA_BANCO" Type="System.String" DbType="VarChar(22)" CanBeNull="true" />
+      <Column Name="REFERENCIA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TIPO" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="SUBTIPO" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DOCUMENTO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CARGADO_ERP" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="FECHA_TEF" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FECHA_TEF_STR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="PS_86_REFERENCIA" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CREDITO" Type="System.Decimal" DbType="Decimal(28,8)" CanBeNull="true" />
+      <Column Name="DEBITO" Type="System.Decimal" DbType="Decimal(28,8)" CanBeNull="true" />
+      <Column Name="CREDITO_STR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DEBITO_STR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CREDITO_DEBITO" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="ESTADO_CB" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="FECHA_MT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FECHA_MT_STR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="PROVEEDOR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CLIENTE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CC_CP" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="MONEDA" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="ASOCIADO_H2H" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="MONTO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_SUBTIPOS_CONTROL_BANCARIO_FILTRO" Method="PROC_OBT_SUBTIPOS_CONTROL_BANCARIO_FILTRO">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_SUBTIPOS_CONTROL_BANCARIO_FILTROResult">
+      <Column Name="SUBTIPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_SUBTIPOS_X_TIPO_CONTROL_BANCARIO_FILTRO" Method="PROC_OBT_SUBTIPOS_X_TIPO_CONTROL_BANCARIO_FILTRO">
+    <Parameter Name="TIPO" Parameter="tIPO" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_SUBTIPOS_X_TIPO_CONTROL_BANCARIO_FILTROResult">
+      <Column Name="SUBTIPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_SUBTIPOS_TODOS_FILTRO" Method="PROC_OBT_SUBTIPOS_TODOS_FILTRO">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_SUBTIPOS_TODOS_FILTROResult">
+      <Column Name="SUBTIPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_INS_DOCUMENTO_MOV_BANCOS" Method="PROC_INS_DOCUMENTO_MOV_BANCOS">
+    <Parameter Name="CUENTA_BANCARIA" Parameter="cUENTA_BANCARIA" Type="System.String" DbType="VarChar(22)" />
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="DOCUMENTO" Parameter="dOCUMENTO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="MONTO" Parameter="mONTO" Type="System.Decimal" DbType="Decimal(28,8)" />
+    <Parameter Name="MONEDA" Parameter="mONEDA" Type="System.String" DbType="VarChar(4)" />
+    <Parameter Name="TIPO" Parameter="tIPO" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="SUBTIPO" Parameter="sUBTIPO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FECHA" Parameter="fECHA" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="CONCEPTO" Parameter="cONCEPTO" Type="System.String" DbType="VarChar(240)" />
+    <Parameter Name="ID_LINEA" Parameter="iD_LINEA" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_CONCILIACIONES_FILTRO" Method="PROC_OBT_CONCILIACIONES_FILTRO">
+    <Parameter Name="CUENTA_BANCO" Parameter="cUENTA_BANCO" Type="System.String" DbType="VarChar(22)" />
+    <Parameter Name="FECHA" Parameter="fECHA" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="PROC_OBT_CONCILIACIONES_FILTROResult">
+      <Column Name="CONCILIACION" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_CONCILIACIONES_TODAS_FILTRO" Method="PROC_OBT_CONCILIACIONES_TODAS_FILTRO">
+    <Parameter Name="CUENTA_BANCO" Parameter="cUENTA_BANCO" Type="System.String" DbType="VarChar(22)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="PROC_OBT_CONCILIACIONES_TODAS_FILTROResult">
+      <Column Name="CONCILIACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="COMPLETO" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CREATEDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="GLOBAL.PROC_INS_DOCUMENTO_MOV_REPORTADOS" Method="PROC_INS_DOCUMENTO_MOV_REPORTADOS">
+    <Parameter Name="CUENTA_BANCARIA" Parameter="cUENTA_BANCARIA" Type="System.String" DbType="VarChar(22)" />
+    <Parameter Name="CONCILIACION" Parameter="cONCILIACION" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="DOCUMENTO" Parameter="dOCUMENTO" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FECHA" Parameter="fECHA" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="CONCEPTO" Parameter="cONCEPTO" Type="System.String" DbType="VarChar(240)" />
+    <Parameter Name="MONTO" Parameter="mONTO" Type="System.Decimal" DbType="Decimal(28,8)" />
+    <Parameter Name="TIPO" Parameter="tIPO" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="ID_LINEA" Parameter="iD_LINEA" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="GLOBAL.PROC_OBT_CUENTAS_BANCARIAS_FILTRO" Method="PROC_OBT_CUENTAS_BANCARIAS_FILTRO">
+    <Parameter Name="CIA" Parameter="cIA" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="PROC_OBT_CUENTAS_BANCARIAS_FILTROResult">
+      <Column Name="CUENTA_BANCO" Type="System.String" DbType="VarChar(22)" CanBeNull="true" />
+      <Column Name="COMPLETO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

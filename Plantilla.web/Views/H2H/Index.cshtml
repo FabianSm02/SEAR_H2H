@@ -1,0 +1,276 @@
+﻿
+@{
+    ViewBag.Title = "Host to Host";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<!--begin::Content wrapper-->
+<div class="d-flex flex-column flex-column-fluid">
+
+    <!--begin::Content-->
+    <div id="kt_app_content" class="app-content flex-column-fluid">
+        <!--begin::Content container-->
+        <div id="kt_app_content_container" class="app-container container-xxl" style="max-width:100% !important">
+            <!--begin::Toolbar-->
+            <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+                <!--begin::Page title-->
+                <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+                    <!--begin::Title-->
+                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">@ViewBag.Title</h1>
+                    <!--end::Title-->
+                </div>
+                <!--end::Page title-->
+            </div>
+            <!--end::Toolbar-->
+            <!--begin::Card-->
+            <div class="card mb-6">
+                <!--begin::Card body-->
+                <div class="card-body pt-0">
+
+                    <div class="row align-items-center mt-7">
+                        <div class="form-group col-md-3 mt-3">
+                            <label>Rango de fechas</label>
+                            <input class="form-control " placeholder="Pick date rage" id="rangoFechas" value="@(DateTime.Now.ToString("01/MM/yyyy")) - @(DateTime.Now.ToString("dd/MM/yyyy"))" />
+                        </div>
+                        @*<div class="form-group col-md-3 mt-3 ">
+                                <label>Proveedor</label>
+                                <select id="proveedor" name="proveedor" class="form-select" data-control="select2" data-placeholder="Filtrar por un proveedor">
+                                    <option></option>
+                                    <option selected value="0">Todos</option>
+                                    <option value="Sin proveedor">Sin proveedor</option>
+
+                                </select>
+                            </div>*@
+                        @*<div class="form-group col-md-3 mt-3 ">
+                                <label>Aprobador</label>
+                                <select id="aprobador" name="aprobador" class="form-select" data-control="select2" data-placeholder="Filtrar por un aprobador">
+                                    <option></option>
+                                    <option selected value="0">Todas</option>
+
+                                </select>
+                            </div>*@
+                        @*<div class="form-group col-md-3 mt-3 ">
+                                <label>Estado</label>
+                                <select id="estado" name="estado" class="form-select" data-control="select2" data-placeholder="Filtrar por un estado" >
+                                    <option></option>
+                                    <option selected value="0">Todas</option>
+
+
+                                </select>
+                            </div>*@
+                        <div class="form-group col-md-3 mt-3 ">
+                            <label>Transferencias</label>
+                            <select id="transferencia" name="transferencia" class="form-select" data-control="select2" data-placeholder="Filtrar por una transferencia">
+                                <option></option>
+                                <option selected value="0">Todas</option>
+                                @{
+                                    if (ViewBag.ListaTransferencias != null)
+                                    {
+                                        foreach (var item in ViewBag.ListaTransferencias)
+                                        {
+                                            <option value="@item.TRANSFERENCIA">@item.TRANSFERENCIA</option>
+                                        }
+                                    }
+                                }
+
+
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3 mt-3 ">
+                            <label>Cuentas bancarias</label>
+                            <select id="cuenta" name="cuenta" class="form-select" data-control="select2" data-placeholder="Filtrar por una cuenta bancaria">
+                                <option></option>
+                                <option selected value="0">Todas</option>
+                                @{
+                                    if (ViewBag.ListaCuentas != null)
+                                    {
+                                        foreach (var item in ViewBag.ListaCuentas)
+                                        {
+                                            <option value="@item.CUENTA_BANCO">@item.COMPLETO</option>
+                                        }
+                                    }
+                                }
+
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3 mt-3 ">
+                            <label>Proveedores</label>
+                            <select id="proveedor" name="proveedor" class="form-select" data-control="select2" data-placeholder="Filtrar por proveedor">
+                                <option></option>
+                                <option selected value="0">Todos</option>
+                                @{
+                                    if (ViewBag.ListaProveedores != null)
+                                    {
+                                        foreach (var item in ViewBag.ListaProveedores)
+                                        {
+                                            <option value="@item.PROVEEDOR">@item.COMPLETO</option>
+                                        }
+                                    }
+                                }
+
+                            </select>
+                        </div>
+                        <div class="col-md-3 mt-8">
+                            <div class="input-icon">
+                                <input type="text" class="form-control" placeholder="Buscar..." id="kt_datatable_search_query" data-kt-docs-table-filter="search" autocomplete="off" />
+                                <span>
+                                    <i class="flaticon2-search-1 text-muted"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Card body-->
+            </div>
+            <!--end::Card-->
+            <!--begin::Card-->
+            <div class="card">
+                <!--begin::Card body-->
+                <div class="card-body pt-0">
+                    <table class="table align-middle table-striped fs-6 gy-4 table-responsive" id="miTabla">
+                        <!--begin::Table head-->
+                        <thead>
+                            <!--begin::Table row-->
+                            <tr class="text-start text-gray-600 fw-bold fs-7 text-uppercase gs-0">
+
+                                @*<th class="min-w-100px">Order ID</th>*@
+                                <th class="w-10px pe-2">
+                                    <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                        <input class="form-check-input" type="checkbox" id="checkAll" data-kt-check="true" data-kt-check-target="#miTabla .form-check-input" value="1" />
+                                    </div>
+                                </th>
+                                <th class="text-left min-w-10px verSubtabla"></th>
+                                <th class="text-left min-w-80px"># SFTL</th>
+                                <th class="text-left min-w-80px"># BANCO</th>
+                                <th class="text-left min-w-75px">Fecha</th>
+                                <th class="text-left min-w-350px">Proveedor</th>
+                                <th class="text-left min-w-350px">Referencia</th>
+                                <th class="text-left min-w-80px">Cuenta banco</th>
+                                @*<th class="text-left min-w-80px">Cuenta</th>*@
+                                <th class="text-left min-w-50px">MON</th>
+                                <th class="text-left min-w-100px">Monto</th>
+                                <th class="text-left min-w-50px">H2H</th>
+                                <th class="text-left min-w-90px">EMAIL PROV</th>
+                                @*<th class="text-left min-w-80px">Gerencia</th>
+                    <th class="text-left min-w-80px">Financiero</th>
+                    <th class="text-left min-w-20px">Estado</th>
+                    <th class="text-left min-w-80px">Creador</th>*@
+                                <th class="text-left min-w-100px">Acciones</th>
+                                @*<th class="text-end"></th>*@
+                            </tr>
+                            <!--end::Table row-->
+                        </thead>
+                        <!--end::Table head-->
+                        <!--begin::Table body-->
+                        <tbody class="fw-bold text-gray-600">
+                        </tbody>
+                        <!--end::Table body-->
+                    </table>
+                    <!--end::Table-->
+                </div>
+                <!--end::Card body-->
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Content container-->
+    </div>
+    <!--end::Content-->
+</div>
+<!--end::Content wrapper-->
+
+<div class="app-engage" id="kt_app_engage">
+
+    <!--begin::Prebuilts toggle-->
+    <a href="javascript:;" onclick="ValidarAprobarTransferenciaBatch()" class="app-engage-btn hover-success d-none multi">
+        <!--begin::Svg Icon | path: icons/duotune/abstract/abs042.svg-->
+        <span class="svg-icon svg-icon-1 pt-1 mb-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.3" d="M10.3 14.3L11 13.6L7.70002 10.3C7.30002 9.9 6.7 9.9 6.3 10.3C5.9 10.7 5.9 11.3 6.3 11.7L10.3 15.7C9.9 15.3 9.9 14.7 10.3 14.3Z" fill="currentColor" />
+                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM11.7 15.7L17.7 9.70001C18.1 9.30001 18.1 8.69999 17.7 8.29999C17.3 7.89999 16.7 7.89999 16.3 8.29999L11 13.6L7.70001 10.3C7.30001 9.89999 6.69999 9.89999 6.29999 10.3C5.89999 10.7 5.89999 11.3 6.29999 11.7L10.3 15.7C10.5 15.9 10.8 16 11 16C11.2 16 11.5 15.9 11.7 15.7Z" fill="currentColor" />
+            </svg>
+        </span>
+        <!--end::Svg Icon-->Aprobar
+    </a>
+    <!--begin::Prebuilts toggle-->
+    <a href="javascript:;" onclick="ValidarRechazarTransferenciaBatch()" class="app-engage-btn hover-success d-none multi">
+        <!--begin::Svg Icon | path: icons/duotune/abstract/abs042.svg-->
+        <span class="svg-icon svg-icon-1 pt-1 mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <rect x="0" y="0" width="24" height="24" />
+                    <circle fill="currentColor" opacity="0.3" cx="12" cy="12" r="10" />
+                    <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="currentColor" />
+                </g>
+            </svg>
+        </span>
+        <!--end::Svg Icon-->Rechazar
+    </a>
+    <!--begin::Get help-->
+    <a href="javascript:;" class="app-engage-btn hover-primary" onclick="scrollToTableRight()">
+        <!--begin::Svg Icon | path: icons/duotune/general/gen063.svg-->
+        <span class="svg-icon svg-icon-1 pt-1 mb-2">
+
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.5" d="M9.63433 11.4343L5.45001 7.25C5.0358 6.83579 5.0358 6.16421 5.45001 5.75C5.86423 5.33579 6.5358 5.33579 6.95001 5.75L12.4929 11.2929C12.8834 11.6834 12.8834 12.3166 12.4929 12.7071L6.95001 18.25C6.5358 18.6642 5.86423 18.6642 5.45001 18.25C5.0358 17.8358 5.0358 17.1642 5.45001 16.75L9.63433 12.5657C9.94675 12.2533 9.94675 11.7467 9.63433 11.4343Z" fill="currentColor" />
+                <path d="M15.6343 11.4343L11.45 7.25C11.0358 6.83579 11.0358 6.16421 11.45 5.75C11.8642 5.33579 12.5358 5.33579 12.95 5.75L18.4929 11.2929C18.8834 11.6834 18.8834 12.3166 18.4929 12.7071L12.95 18.25C12.5358 18.6642 11.8642 18.6642 11.45 18.25C11.0358 17.8358 11.0358 17.1642 11.45 16.75L15.6343 12.5657C15.9467 12.2533 15.9467 11.7467 15.6343 11.4343Z" fill="currentColor" />
+            </svg>
+        </span>
+        <!--end::Svg Icon-->Derecha
+    </a>
+    <!--end::Get help-->
+    <!--begin::Get help-->
+    <a href="javascript:;" class="app-engage-btn hover-primary" onclick="scrollToTableLeft()">
+        <!--begin::Svg Icon | path: icons/duotune/general/gen063.svg-->
+        <span class="svg-icon svg-icon-1 pt-1 mb-2">
+
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.5" d="M14.2657 11.4343L18.45 7.25C18.8642 6.83579 18.8642 6.16421 18.45 5.75C18.0358 5.33579 17.3642 5.33579 16.95 5.75L11.4071 11.2929C11.0166 11.6834 11.0166 12.3166 11.4071 12.7071L16.95 18.25C17.3642 18.6642 18.0358 18.6642 18.45 18.25C18.8642 17.8358 18.8642 17.1642 18.45 16.75L14.2657 12.5657C13.9533 12.2533 13.9533 11.7467 14.2657 11.4343Z" fill="currentColor" />
+                <path d="M8.2657 11.4343L12.45 7.25C12.8642 6.83579 12.8642 6.16421 12.45 5.75C12.0358 5.33579 11.3642 5.33579 10.95 5.75L5.40712 11.2929C5.01659 11.6834 5.01659 12.3166 5.40712 12.7071L10.95 18.25C11.3642 18.6642 12.0358 18.6642 12.45 18.25C12.8642 17.8358 12.8642 17.1642 12.45 16.75L8.2657 12.5657C7.95328 12.2533 7.95328 11.7467 8.2657 11.4343Z" fill="currentColor" />
+            </svg>
+        </span>
+        <!--end::Svg Icon-->Izquierda
+    </a>
+    <!--end::Get help-->
+    <!--begin::Get help-->
+    <a href="javascript:;" class="app-engage-btn hover-primary d-none multi_correo" onclick="Correo()">
+        <!--begin::Svg Icon | path: icons/duotune/general/gen063.svg-->
+        <span class="svg-icon svg-icon-primary svg-icon-2x">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.3" d="M21 18H3C2.4 18 2 17.6 2 17V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V17C22 17.6 21.6 18 21 18Z" fill="currentColor" />
+                <path d="M11.4 13.5C11.8 13.8 12.3 13.8 12.6 13.5L21.6 6.30005C21.4 6.10005 21.2 6 20.9 6H2.99998C2.69998 6 2.49999 6.10005 2.29999 6.30005L11.4 13.5Z" fill="currentColor" />
+            </svg>
+        </span>
+        <!--end::Svg Icon-->Notificar
+    </a>
+    <!--end::Get help-->
+    <!--begin::Get help-->
+    <a href="javascript:;" class="app-engage-btn hover-primary">
+        <!--begin::Svg Icon | path: icons/duotune/general/gen063.svg-->
+        <span class="svg-icon svg-icon-1 pt-1 mb-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21.7189 13.9C17.6189 9.8 11.4189 8.79999 6.21895 11.2L7.31895 12.9C11.719 11 16.919 12 20.319 15.4C20.519 15.6 20.819 15.7 21.019 15.7C21.219 15.7 21.5189 15.6 21.7189 15.4C22.1189 14.9 22.1189 14.2 21.7189 13.9Z" fill="currentColor" />
+                <path opacity="0.3" d="M10.119 17.1L3.61896 7L2.01895 14.3C1.91895 14.8 2.21895 15.4 2.81895 15.5L10.119 17.1Z" fill="currentColor" />
+            </svg>
+        </span>
+        <!--end::Svg Icon-->Volver
+    </a>
+    <!--end::Get help-->
+</div>
+<!--end::Engage-->
+<script>
+
+    let APROBACION_PAGOS = "1";
+    const H2H_URL = '@Url.Content("~/H2H")'
+    const H2H = '@Session["H2H"].ToString()' === '1'
+</script>
+@Scripts.Render("~/assets/plugins/custom/uppy/uppy.bundle.js")
+@Scripts.Render(System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/bundles/H2HIndex", true))
+
+
+
+
+
+
